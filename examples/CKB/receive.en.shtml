@@ -1,0 +1,38 @@
+<script type="text/javascript"><![CDATA[
+class Token {
+
+    constructor(tokenInstance) {
+        this.props = tokenInstance;
+        window.onConfirm = function() {
+            window.close();
+        }
+    }
+
+    generateCKBAddress() {
+        //TODO
+        return "";
+    }
+
+    //TODO I will set the QR Code images later
+    render() {
+        return`
+        <div class="ui container">
+          <div class="ui segment">
+            <span><bold><h3>Your Ethereum address: ${this.props.ownerAddress}</h3></bold></span>
+            <span><img id="qrEthAddress"></span>
+            <span><bold><h3>Your CKB address: ${this.generateCKBAddress()}</h3></bold></span>
+            <span><img id="qrCkbAddress"></span>
+            <span><bold><h3>CKB Balance: TODO</h3></bold></span>
+          </div>
+        </div>
+`;
+    }
+}
+
+web3.tokens.dataChanged = (oldTokens, updatedTokens) => {
+    const currentTokenInstance = web3.tokens.data.currentInstance;
+    document.getElementById('root').innerHTML = new Token(currentTokenInstance).render();
+};
+
+]]></script>
+<div id="root"></div>

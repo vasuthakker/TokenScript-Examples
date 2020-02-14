@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TODO feel free to write entities in Chinese if you prefer, can use .zh.shtml -->
+<!DOCTYPE token  [
+        <!ENTITY style SYSTEM "shared.css">
+        <!ENTITY send.en SYSTEM "send.en.shtml">
+        <!ENTITY receive.en SYSTEM "receive.en.shtml">
+        <!ENTITY deposit.en SYSTEM "depositDAO.en.shtml">
+        <!ENTITY withdraw.en SYSTEM "withdrawDAO.en.shtml">
+]>
+<ts:token xmlns:ts="http://tokenscript.org/2019/10/tokenscript"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:xml="http://www.w3.org/XML/1998/namespace"
+          xsi:schemaLocation="http://tokenscript.org/2019/10/tokenscript http://tokenscript.org/2019/10/tokenscript/tokenscript.xsd"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          custodian="false"
+>
+    <ts:name>
+        <ts:string xml:lang="en">CKB Test Wallet</ts:string>
+    </ts:name>
+    <ts:contract name="CKB">
+        <!-- TODO will make a new dummy contract here -->
+        <ts:address network="1">0x8c0edb69ebf038ba0c7a4873e40fc09725064c2e</ts:address>
+    </ts:contract>
+    <ts:origins>
+        <ts:ethereum contract="CKB"/>
+    </ts:origins>
+
+    <!-- TODO implement a way to sign in an action rather than just a tx object? -->
+    <ts:cards>
+        <!-- TODO also show balances and allow sending with both address types -->
+        <ts:action>
+            <ts:name>
+                <ts:string xml:lang="en">Send</ts:string>
+            </ts:name>
+            <style type="text/css">&style;</style>
+            <ts:view xml:lang="en">&send.en;</ts:view>
+        </ts:action>
+
+        <!-- TODO duplicate logic to show CKB and ETH Wallet -->
+        <ts:action>
+            <ts:name>
+                <ts:string xml:lang="en">Receive</ts:string>
+            </ts:name>
+            <style type="text/css">&style;</style>
+            <ts:view xml:lang="en">&receive.en;</ts:view>
+        </ts:action>
+
+        <!-- TODO implement logic to deposit/withdraw to the nervos DAO and show the balance -->
+        <ts:action>
+            <ts:name>
+                <ts:string xml:lang="en">Deposit</ts:string>
+            </ts:name>
+            <style type="text/css">&style;</style>
+            <ts:view xml:lang="en">&deposit.en;</ts:view>
+        </ts:action>
+
+        <ts:action>
+            <ts:name>
+                <ts:string xml:lang="en">Withdraw</ts:string>
+            </ts:name>
+            <style type="text/css">&style;</style>
+            <ts:view xml:lang="en">&withdraw.en;</ts:view>
+        </ts:action>
+
+    </ts:cards>
+
+    <ts:attribute-types>
+        <!-- place holder -->
+        <ts:attribute-type id="symbol" syntax="1.3.6.1.4.1.1466.115.121.1.15">
+            <ts:origins>
+                <ts:ethereum function="symbol" contract="CKB" as="utf8">
+                </ts:ethereum>
+            </ts:origins>
+        </ts:attribute-type>
+    </ts:attribute-types>
+</ts:token>
