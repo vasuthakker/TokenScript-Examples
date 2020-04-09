@@ -36,7 +36,6 @@
     <ts:ethereum contract="EntryToken">
     </ts:ethereum>
   </ts:origins>
-  <ts:selections>
     <ts:selection id="expired" filter="expired=TRUE">
       <ts:name>
         <ts:plurals xml:lang="en">
@@ -46,7 +45,6 @@
         <ts:string xml:lang="zh">已经过期的票</ts:string>
       </ts:name>
     </ts:selection>
-  </ts:selections>
   <ts:cards>
     <ts:token>
       <ts:item-view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
